@@ -17,6 +17,11 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Routes
+// Ensure you have a route defined for '/'
+app.get("/", (req, res) => {
+  res.send("Hello World!"); // Or render a page
+});
+
 app.use("/api/post", postsRouter);
 app.use("/api/comment", commentRouter);
 app.use("/api/reply", replyRouter);

@@ -8,20 +8,20 @@
   ],
   "routes": [
     {
-      "src": "/api/post",
-      "dest": "api/index.js"
+      "src": "/api/Post/(.*)",
+      "dest": "/api/Posts/PostRoutes.js"
     },
     {
-      "src": "/api/comment",
-      "dest": "api/index.js"
+      "src": "/api/Comment/(.*)",
+      "dest": "/api/Comment/CommentRoute.js"
     },
     {
-      "src": "/api/reply",
-      "dest": "api/index.js"
+      "src": "/api/Reply/(.*)",
+      "dest": "/api/Reply/ReplyRoute.js"
     },
     {
-      "src": "/api/user",
-      "dest": "api/index.js"
+      "src": "/api/User/(.*)",
+      "dest": "/api/User/UserRoute.js"
     }
   ]
 }

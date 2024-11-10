@@ -1,35 +1,35 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const postsRouter = require("./routes/postRoutes");
+const express = require('express');
+const mongoose = require('mongoose');
+const postsRouter = require('./routes/postRoutes');
 const commentRouter = require("./routes/commentRoute");
 const replyRouter = require("./routes/replyRoute");
 const userRouter = require("./routes/userRoute");
-const loginRouter = require("./routes/loginRoute");
-// const path = require("path");
-// const dotenv = require('dotenv');
-// dotenv.config();
 const app = express();
+const port = process.env.PORT || 5000;
+const cors = require("cors");
+const dotenv = require('dotenv');
+dotenv.config();
+
+app.use(cors())
+
+// MongoDB Atlas connection string
+const uri = 'mongodb+srv://vercel-admin-user:Mepassword123@cluster0.xvmqj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'; // Replace with your Atlas URI
 
 // Middleware
-app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());  // Middleware for parsing JSON requests
 
 // Routes
-// Ensure you have a route defined for '/'
-app.get("/", (req, res) => {
-  res.send("Hello World!"); // Or render a page
-});
+app.use('/api/post', postsRouter);
+app.use('/api/comment', commentRouter);
+app.use('/api/reply', replyRouter);
+app.use('/api/user', userRouter);  // Mount the posts router under "/api"
 
-app.get("/api/post", postsRouter);
-app.get("/api/comment", commentRouter);
-app.get("/api/reply", replyRouter);
-app.get("/api/user", userRouter);
-app.get("/api/login", loginRouter);
+// Connect to MongoDB using Mongoose
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("Connected to MongoDB Atlas"))
+  .catch((error) => console.error("Failed to connect to MongoDB Atlas:", error));
 
-  mongoose.connect('mongodb+srv://vercel-admin-user:Mepassword123@cluster0.xvmqj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
-// Start the server
-app.listen(5000, () => {
-  console.log("Server is running on port 5000");
+// Start the Express server
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
 });

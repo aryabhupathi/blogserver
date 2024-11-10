@@ -25,16 +25,6 @@ app.use("/api/user", userRouter);
 app.use("/api/login", loginRouter);
 app.use('/uploads', express.static('uploads'));
 
-
-// Connect to MongoDB
-// mongoose.connect(process.env.MONGO_URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// })
-//   .then(() => console.log("MongoDB connected"))
-//   .catch((err) => console.log(err));
-
-
   mongoose.connect('mongodb+srv://vercel-admin-user:Mepassword123@cluster0.xvmqj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
 // Start the server
 app.listen(5000, () => {

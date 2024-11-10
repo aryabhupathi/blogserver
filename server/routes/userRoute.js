@@ -1,7 +1,6 @@
 const express = require("express");
 const User = require("../models/User");
 const router = express.Router();
-const multer = require("multer");
 const Post = require("../models/Post");
 const jwt = require("jsonwebtoken");
 router.get("/users", async (req, res) => {
@@ -53,8 +52,7 @@ router.put("/users/:id", async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 });
-const upload = multer({ dest: "uploads/" });
-router.post("/newusers", upload.single("profilePicture"), async (req, res) => {
+router.post("/newusers", async (req, res) => {
   const { username, email, password } = req.body;
   if (!email || !password) {
     return res.status(400).json({ message: "Email and password are required" });
@@ -68,7 +66,7 @@ router.post("/newusers", upload.single("profilePicture"), async (req, res) => {
       name: username,
       email,
       password,
-      profilePicture: req.file ? req.file.filename : "default-avatar.jpg",
+      
     });
     const savedUser = await newUser.save();
     const token = jwt.sign({ userId: savedUser._id }, process.env.JWT_SECRET, {

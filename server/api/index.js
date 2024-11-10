@@ -23,6 +23,14 @@ const uri = 'mongodb+srv://vercel-admin-user:Mepassword123@cluster0.xvmqj.mongod
 // Middleware
 app.use(express.json());  // Middleware for parsing JSON requests
 
+app.get("/", async (req, res) => {
+  try {
+    const posts = await Post.find().populate("author", "name email");
+    res.status(200).json(posts);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 // Routes
 app.use('/api/post', postsRouter);
 app.use('/api/comment', commentRouter);

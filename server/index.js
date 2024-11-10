@@ -34,6 +34,8 @@ mongoose.connect(process.env.MONGO_URI, {
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log(err));
 
+
+  mongoose.connect('mongodb+srv://vercel-admin-user:<db_password>@cluster0.xvmqj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0JWT_SECRET=trynewpassword');
 // Start the server
 app.listen(5000, () => {
   console.log("Server is running on port 5000");

@@ -1,14 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
-// const postsRouter = require('../routes/postRoutes');
-// const commentRouter = require("../routes/commentRoute");
-// const replyRouter = require("../routes/replyRoute");
-// const userRouter = require("../routes/userRoute");
-
-const postsRouter = require('./Post/PostRoutes');
-const commentRouter = require("./Comment/CommentRoute");
-const replyRouter = require("./Reply/ReplyRoute");
-const userRouter = require("./User/UserRoute");
+const postsRouter = require('./routes/postRoutes');
+const commentRouter = require("./routes/commentRoute");
+const replyRouter = require("./routes/replyRoute");
+const userRouter = require("./routes/userRoute");
 const app = express();
 const port = process.env.PORT || 5000;
 const cors = require("cors");

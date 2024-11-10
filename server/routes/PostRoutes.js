@@ -1,9 +1,7 @@
 const express = require("express");
-// const Post = require("../models/Post");
-const Post = require("../../models/Post");
+const Post = require("../models/Post");
 const router = express.Router();
-// const User = require("../models/User");
-const User = require("../../models/User");
+const User = require("../models/User");
 router.get("/posts", async (req, res) => {
   try {
     const posts = await Post.find().populate("author", "name email");

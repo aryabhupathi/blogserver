@@ -1,6 +1,5 @@
 const express = require("express");
-// const Reply = require("../models/Reply");
-const Reply = require("../../models/Reply");
+const Reply = require("../models/Reply");
 const router = express.Router();
 router.get("/replies", async (req, res) => {
   try {

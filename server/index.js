@@ -15,7 +15,6 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Routes
 app.use("/api/post", postsRouter);
@@ -23,7 +22,6 @@ app.use("/api/comment", commentRouter);
 app.use("/api/reply", replyRouter);
 app.use("/api/user", userRouter);
 app.use("/api/login", loginRouter);
-app.use('/uploads', express.static('uploads'));
 
   mongoose.connect('mongodb+srv://vercel-admin-user:Mepassword123@cluster0.xvmqj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
 // Start the server

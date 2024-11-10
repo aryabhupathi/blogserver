@@ -27,15 +27,15 @@ app.use('/uploads', express.static('uploads'));
 
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.log(err));
+// mongoose.connect(process.env.MONGO_URI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// })
+//   .then(() => console.log("MongoDB connected"))
+//   .catch((err) => console.log(err));
 
 
-  mongoose.connect('mongodb+srv://vercel-admin-user:<db_password>@cluster0.xvmqj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0JWT_SECRET=trynewpassword');
+  mongoose.connect('mongodb+srv://vercel-admin-user:Mepassword123@cluster0.xvmqj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0JWT_SECRET=trynewpassword');
 // Start the server
 app.listen(5000, () => {
   console.log("Server is running on port 5000");
